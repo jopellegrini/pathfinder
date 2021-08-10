@@ -1,0 +1,13 @@
+.main-ctn {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.header-ctn {
+  width: 15%;
+}
+
+.grid-ctn {
+  width: 85%;
+}
