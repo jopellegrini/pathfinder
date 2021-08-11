@@ -1,5 +1,5 @@
 <table class="grid-table">
-  <tr>
-    <td>H</td>
+  <tr *ngFor="let row of grid; let i = index">
+    <td *ngFor="let column of grid[i]; let j = index"></td>
   </tr>
 </table>

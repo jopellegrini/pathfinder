@@ -9,8 +9,8 @@ import { Cell } from "../cell/Cell";
 export class GridComponent implements OnInit {
   constructor() {}
 
-  gridWidth: number = 10;
-  gridHeight: number = 10;
+  gridWidth: number = 45;
+  gridHeight: number = 30;
   grid: Cell[][] = [];
 
   ngOnInit(): void {
