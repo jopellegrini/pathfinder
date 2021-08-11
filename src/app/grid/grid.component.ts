@@ -14,6 +14,10 @@ export class GridComponent implements OnInit {
   grid: Cell[][] = [];
 
   ngOnInit(): void {
+    this.initGrid();
+  }
+
+  initGrid(): void {
     for (let i = 0; i < this.gridHeight; i++) {
       let row: Cell[] = [];
       for (let j = 0; j < this.gridWidth; j++) {
