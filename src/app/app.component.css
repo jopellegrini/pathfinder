@@ -6,6 +6,7 @@
 
 .header-ctn {
   width: 15%;
+  min-width: 10em;
 }
 
 .grid-ctn {
