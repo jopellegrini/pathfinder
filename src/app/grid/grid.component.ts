@@ -25,10 +25,15 @@ export class GridComponent implements OnInit {
           id: this.gridWidth * i + j,
           x: j,
           y: i,
+          isStart: false,
+          isEnd: false,
         };
         row.push(cell);
       }
       this.grid.push(row);
     }
+
+    this.grid[4][4].isStart = true;
+    this.grid[10][25].isEnd = true;
   }
 }

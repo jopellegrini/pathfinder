@@ -3,9 +3,18 @@
 }
 
 .grid-table td {
-  border: 1px solid black;
+  border: 1px solid #dbdbdb;
   border-left: 0;
+  border-top: 0;
   width: 25px;
   height: 25px;
   resize: both;
+}
+
+.start-cell {
+  background-color: var(--start-cell-color);
+}
+
+.end-cell {
+  background-color: var(--end-cell-color);
 }

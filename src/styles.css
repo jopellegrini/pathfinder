@@ -5,6 +5,11 @@
   box-sizing: inherit;
 }
 
+* {
+  --start-cell-color: #1ca160;
+  --end-cell-color: #dd4e43;
+}
+
 @font-face {
   font-family: "roboto";
 

@@ -1,5 +1,11 @@
 <table class="grid-table">
   <tr *ngFor="let row of grid; let i = index">
-    <td *ngFor="let column of grid[i]; let j = index"></td>
+    <td
+      *ngFor="let cell of grid[i]; let j = index"
+      [ngClass]="{
+        'start-cell': cell.isStart,
+        'end-cell': cell.isEnd
+      }"
+    ></td>
   </tr>
 </table>
