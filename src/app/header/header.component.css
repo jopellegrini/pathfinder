@@ -9,7 +9,6 @@ nav {
   background-color: #02577a;
   color: #fff;
   padding: 1em;
-  box-shadow: 5px 3px 13px -5px rgba(0, 0, 0, 0.57);
 }
 
 nav h1 {
@@ -32,9 +31,18 @@ nav > button {
   margin-bottom: 1em;
 }
 
+nav > button:hover {
+  background-color: #006894;
+}
+
 nav > button.main_btn {
   background-color: #02a9f7;
   border: 0;
+  transition: 0.1s;
+}
+
+nav > button.main_btn:hover {
+  background-color: #20b3f7;
 }
 
 .algo_select-ctn {
@@ -49,20 +57,25 @@ nav > button.main_btn {
 }
 
 .algo_select-ctn > input[type="radio"] {
-  width: 2em;
-  height: 2em;
-  margin-right: 1em;
+  width: 1em;
+  height: 1em;
 
   border: 1px solid #fff;
+  appearance: none;
   -webkit-appearance: none;
+  border-radius: 50%;
+  background-clip: content-box;
+  padding: 0.3em;
+
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .algo_select-ctn > input[type="radio"]:checked {
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c3ZnanM9Imh0dHA6Ly9zdmdqcy5jb20vc3ZnanMiIHZlcnNpb249IjEuMSIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHg9IjAiIHk9IjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgY2xhc3M9IiI+PGc+PGxpbmsgdHlwZT0idGV4dC9jc3MiIHJlbD0ic3R5bGVzaGVldCIgaWQ9ImRhcmstbW9kZS1jdXN0b20tbGluayIvPjxsaW5rIHR5cGU9InRleHQvY3NzIiByZWw9InN0eWxlc2hlZXQiIGlkPSJkYXJrLW1vZGUtZ2VuZXJhbC1saW5rIi8+PHN0eWxlIGxhbmc9ImVuIiB0eXBlPSJ0ZXh0L2NzcyIgaWQ9ImRhcmstbW9kZS1jdXN0b20tc3R5bGUiLz48c3R5bGUgbGFuZz0iZW4iIHR5cGU9InRleHQvY3NzIiBpZD0iZGFyay1tb2RlLW5hdGl2ZS1zdHlsZSIvPjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTkuNzA3IDE5LjEyMWMtLjE4Ny4xODgtLjQ0Mi4yOTMtLjcwNy4yOTNzLS41Mi0uMTA1LS43MDctLjI5M2wtNS42NDYtNS42NDdjLS41ODYtLjU4Ni0uNTg2LTEuNTM2IDAtMi4xMjFsLjcwNy0uNzA3Yy41ODYtLjU4NiAxLjUzNS0uNTg2IDIuMTIxIDBsMy41MjUgMy41MjUgOS41MjUtOS41MjVjLjU4Ni0uNTg2IDEuNTM2LS41ODYgMi4xMjEgMGwuNzA3LjcwN2MuNTg2LjU4Ni41ODYgMS41MzYgMCAyLjEyMXoiIGZpbGw9IiNmZmZmZmYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiLz48L2c+PC9nPjwvc3ZnPgo=)
-    no-repeat center;
-  background-size: 1.5em 1.5em;
+  background-color: #fff;
 }
 
 .algo_select-ctn > label {
   font-size: 1.2em;
+  padding-left: 0.4em;
 }
