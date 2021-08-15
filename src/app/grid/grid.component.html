@@ -7,9 +7,11 @@
         'end-cell': cell.isEnd,
         'wall-cell': cell.isWall
       }"
-      (mousedown)="onMouseDown()"
+      (mousedown)="onMouseDown(cell)"
       (mouseup)="onMouseUp()"
       (mouseover)="onMouseOverCell(cell)"
+      ondragstart="return false;"
+      ondrop="return false;"
     ></td>
   </tr>
 </table>
