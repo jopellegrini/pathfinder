@@ -1,7 +1,7 @@
 <table class="grid-table">
   <tr *ngFor="let row of grid; let i = index">
     <td
-      *ngFor="let cell of grid[i]; let j = index"
+      *ngFor="let cell of grid[i]; let j = index; trackBy: getTrackBy"
       [ngClass]="{
         'start-cell': cell.isStart,
         'end-cell': cell.isEnd,

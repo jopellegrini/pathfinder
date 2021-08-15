@@ -60,4 +60,8 @@ export class GridComponent implements OnInit {
     if (this.isBuilding) cell.isWall = true;
     else cell.isWall = false;
   }
+
+  getTrackBy(index: any, cell: Cell) {
+    return cell.id;
+  }
 }
