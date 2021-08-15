@@ -27,13 +27,18 @@ describe("objectContaining", function () {
 
   beforeEach(function () {
     grid = new GridComponent();
+    grid.initGrid();
   });
 
   it("matches objects with the expect key/value pairs", function () {
     expect(grid).toEqual(
       jasmine.objectContaining({
-        gridWidth: 10,
+        gridWidth: 45,
       })
     );
+  });
+
+  it("gives correct neighbours for first node", function () {
+    expect(grid.getCellNeighbours(grid.getGrid()[0][0], true)).toEqual([]);
   });
 });

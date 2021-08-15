@@ -9,9 +9,9 @@ import { Cell } from "../cell/Cell";
 export class GridComponent implements OnInit {
   constructor() {}
 
-  gridWidth: number = 45;
-  gridHeight: number = 30;
-  grid: Cell[][] = [];
+  private gridWidth: number = 45;
+  private gridHeight: number = 30;
+  private grid: Cell[][] = [];
 
   isClicking: boolean = false;
   isBuilding: boolean = true;
@@ -39,6 +39,16 @@ export class GridComponent implements OnInit {
 
     this.grid[4][4].isStart = true;
     this.grid[10][25].isEnd = true;
+  }
+
+  getGrid(): Cell[][] {
+    return this.grid;
+  }
+
+  getCellNeighbours(cell: Cell, diagonal: boolean): Cell[] {
+    let result: Cell[] = [];
+
+    return result;
   }
 
   onMouseDown(cell: Cell): void {
