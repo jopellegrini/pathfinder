@@ -8,6 +8,7 @@
 * {
   --start-cell-color: #1ca160;
   --end-cell-color: #dd4e43;
+  --wall-cell-color: #dbdbdb;
 }
 
 @font-face {

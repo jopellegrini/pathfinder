@@ -13,6 +13,8 @@ export class GridComponent implements OnInit {
   gridHeight: number = 30;
   grid: Cell[][] = [];
 
+  isClicking: boolean = false;
+
   ngOnInit(): void {
     this.initGrid();
   }
@@ -27,6 +29,7 @@ export class GridComponent implements OnInit {
           y: i,
           isStart: false,
           isEnd: false,
+          isWall: false,
         };
         row.push(cell);
       }
@@ -35,5 +38,19 @@ export class GridComponent implements OnInit {
 
     this.grid[4][4].isStart = true;
     this.grid[10][25].isEnd = true;
+  }
+
+  onMouseDown(): void {
+    this.isClicking = true;
+  }
+
+  onMouseUp(): void {
+    this.isClicking = false;
+  }
+
+  onMouseOverCell(cell: Cell): void {
+    if (!this.isClicking) return;
+
+    cell.isWall = true;
   }
 }

@@ -4,8 +4,12 @@
       *ngFor="let cell of grid[i]; let j = index"
       [ngClass]="{
         'start-cell': cell.isStart,
-        'end-cell': cell.isEnd
+        'end-cell': cell.isEnd,
+        'wall-cell': cell.isWall
       }"
+      (mousedown)="onMouseDown()"
+      (mouseup)="onMouseUp()"
+      (mouseover)="onMouseOverCell(cell)"
     ></td>
   </tr>
 </table>

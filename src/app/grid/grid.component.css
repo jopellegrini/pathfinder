@@ -18,3 +18,7 @@
 .end-cell {
   background-color: var(--end-cell-color);
 }
+
+.wall-cell {
+  background-color: var(--wall-cell-color);
+}
