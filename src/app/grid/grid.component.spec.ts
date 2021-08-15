@@ -37,8 +37,8 @@ describe("GridComponent", () => {
   it("gives correct neighbours for first cell non diagonal", function () {
     let neighbours: Cell[] = grid.getCellNeighbours(grid.getGrid()[0][0], true);
 
-    expect(neighbours[0].id).toEqual(45);
-    expect(neighbours[1].id).toEqual(1);
+    expect(neighbours.some((e) => e.id == 45)).toBeTruthy();
+    expect(neighbours.some((e) => e.id == 1)).toBeTruthy();
   });
 
   it("gives correct neighbours for top right cell non diagonal", function () {
@@ -47,8 +47,8 @@ describe("GridComponent", () => {
       true
     );
 
-    expect(neighbours[0].id).toEqual(89);
-    expect(neighbours[1].id).toEqual(43);
+    expect(neighbours.some((e) => e.id == 89)).toBeTruthy();
+    expect(neighbours.some((e) => e.id == 43)).toBeTruthy();
   });
 
   it("gives correct neighbours for bottom left cell non diagonal", function () {
@@ -57,8 +57,8 @@ describe("GridComponent", () => {
       true
     );
 
-    expect(neighbours[0].id).toEqual(1260);
-    expect(neighbours[1].id).toEqual(1306);
+    expect(neighbours.some((e) => e.id == 1260)).toBeTruthy();
+    expect(neighbours.some((e) => e.id == 1306)).toBeTruthy();
   });
 
   it("gives correct neighbours for bottom right cell non diagonal", function () {
@@ -67,8 +67,8 @@ describe("GridComponent", () => {
       true
     );
 
-    expect(neighbours[0].id).toEqual(1304);
-    expect(neighbours[1].id).toEqual(1348);
+    expect(neighbours.some((e) => e.id == 1304)).toBeTruthy();
+    expect(neighbours.some((e) => e.id == 1348)).toBeTruthy();
   });
 
   it("gives correct neighbours for random middle cell", function () {
@@ -77,9 +77,9 @@ describe("GridComponent", () => {
       true
     );
 
-    expect(neighbours[0].id).toEqual(412);
-    expect(neighbours[1].id).toEqual(502);
-    expect(neighbours[2].id).toEqual(456);
-    expect(neighbours[3].id).toEqual(458);
+    expect(neighbours.some((e) => e.id == 412)).toBeTruthy();
+    expect(neighbours.some((e) => e.id == 502)).toBeTruthy();
+    expect(neighbours.some((e) => e.id == 456)).toBeTruthy();
+    expect(neighbours.some((e) => e.id == 458)).toBeTruthy();
   });
 });
