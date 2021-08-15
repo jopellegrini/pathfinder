@@ -1,6 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
 import { GridComponent } from "./grid/grid.component";
+import { Cell } from "./cell/Cell";
 
 describe("AppComponent", () => {
   beforeEach(async () => {
@@ -19,26 +20,5 @@ describe("AppComponent", () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual("pathfinder");
-  });
-});
-
-describe("objectContaining", function () {
-  var grid: GridComponent;
-
-  beforeEach(function () {
-    grid = new GridComponent();
-    grid.initGrid();
-  });
-
-  it("matches objects with the expect key/value pairs", function () {
-    expect(grid).toEqual(
-      jasmine.objectContaining({
-        gridWidth: 45,
-      })
-    );
-  });
-
-  it("gives correct neighbours for first node", function () {
-    expect(grid.getCellNeighbours(grid.getGrid()[0][0], true)).toEqual([]);
   });
 });
