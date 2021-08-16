@@ -10,10 +10,15 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   @Output() clickedOnClearEvent = new EventEmitter<string>();
+  @Output() runEvent = new EventEmitter<string>();
 
   ngOnInit(): void {}
 
   emitClearWalls() {
     this.clickedOnClearEvent.emit();
+  }
+
+  emitRun() {
+    this.runEvent.emit();
   }
 }

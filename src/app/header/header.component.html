@@ -1,7 +1,7 @@
 <header>
   <nav>
     <div><h1>Pathfinder</h1></div>
-    <button class="main_btn">Run</button>
+    <button class="main_btn" (click)="emitRun()">Run</button>
     <button (click)="emitClearWalls()">Clear</button>
     <button>Random</button>
     <p>Algorithm :</p>
@@ -19,8 +19,8 @@
       <label for="algo_select_dfs_inp">DFS</label>
     </div>
     <div class="algo_select-ctn">
-      <input type="radio" name="algo_select" id="algo_select_djikstra_inp" />
-      <label for="algo_select_djikstra_inp">Djikstra</label>
+      <input type="radio" name="algo_select" id="algo_select_dijkstra_inp" />
+      <label for="algo_select_dijkstra_inp">Dijkstra</label>
     </div>
     <div class="algo_select-ctn">
       <input type="radio" name="algo_select" id="algo_select_a_inp" />

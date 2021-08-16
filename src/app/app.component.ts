@@ -14,4 +14,8 @@ export class AppComponent {
   clearWalls(): void {
     this.grid.clearWalls();
   }
+
+  findPath(): void {
+    alert("Finding path");
+  }
 }
