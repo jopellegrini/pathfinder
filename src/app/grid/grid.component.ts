@@ -134,7 +134,7 @@ export class GridComponent implements OnInit {
     if (cell.isWall) this.isBuilding = false;
     else this.isBuilding = true;
 
-    cell.isWall = !cell.isWall;
+    if (!cell.isStart && !cell.isEnd) cell.isWall = !cell.isWall;
   }
 
   onMouseUp(): void {
@@ -142,7 +142,7 @@ export class GridComponent implements OnInit {
   }
 
   onMouseOverCell(cell: Cell): void {
-    if (!this.isClicking) return;
+    if (!this.isClicking || cell.isStart || cell.isEnd) return;
 
     if (this.isBuilding) cell.isWall = true;
     else cell.isWall = false;
