@@ -13,8 +13,8 @@ export class GridComponent implements OnInit {
   private gridHeight: number = 30;
   private grid: Cell[][] = [];
 
-  isClicking: boolean = false;
-  isBuilding: boolean = true;
+  private isClicking: boolean = false;
+  private isBuilding: boolean = true;
 
   ngOnInit(): void {
     this.initGrid();
