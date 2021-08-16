@@ -20,6 +20,9 @@ export class GridComponent implements OnInit {
     this.initGrid();
   }
 
+  /**
+   * Fills grid with cells
+   */
   initGrid(): void {
     for (let i = 0; i < this.gridHeight; i++) {
       let row: Cell[] = [];
@@ -53,6 +56,9 @@ export class GridComponent implements OnInit {
     return this.gridHeight;
   }
 
+  /**
+   * Removes all walls from grid
+   */
   clearWalls(): void {
     for (let i = 0; i < this.gridHeight; i++) {
       for (let j = 0; j < this.gridWidth; j++) {
@@ -61,6 +67,11 @@ export class GridComponent implements OnInit {
     }
   }
 
+  /**
+   * @param {Cell} cell - The cell whose neighbours must be found
+   * @param {boolean} diagonal - Whether the result must contain diagonal cells
+   * @return {Cell[]} An array containing neighbours cells
+   */
   getCellNeighbours(cell: Cell, diagonal: boolean): Cell[] {
     let result: Cell[] = [];
 

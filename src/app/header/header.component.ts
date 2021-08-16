@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   @Output() clickedOnClearEvent = new EventEmitter<string>();
-  @Output() runEvent = new EventEmitter<string>();
+  @Output() runEvent = new EventEmitter<Algorithm>();
 
   private algorithm: Algorithm = Algorithm.BFS;
 
@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   emitRun() {
-    this.runEvent.emit();
+    this.runEvent.emit(this.algorithm);
   }
 
   changeAlgo(algo: string) {

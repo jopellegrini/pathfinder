@@ -1,5 +1,6 @@
 import { Component, ViewChild } from "@angular/core";
 import { GridComponent } from "./grid/grid.component";
+import { Algorithm } from "./algorithms/AlgorithmsEnum";
 
 @Component({
   selector: "app-root",
@@ -15,7 +16,7 @@ export class AppComponent {
     this.grid.clearWalls();
   }
 
-  findPath(): void {
-    alert("Finding path");
+  findPath(algorithm: Algorithm): void {
+    alert("Finding path with " + algorithm);
   }
 }
