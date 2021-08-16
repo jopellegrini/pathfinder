@@ -1,4 +1,7 @@
 <div class="main-ctn">
-  <app-header class="header-ctn"></app-header>
+  <app-header
+    class="header-ctn"
+    (clickedOnClearEvent)="clearWalls()"
+  ></app-header>
   <app-grid class="grid-ctn"></app-grid>
 </div>

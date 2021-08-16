@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Cell } from "../cell/Cell";
 
 @Component({
@@ -43,6 +43,22 @@ export class GridComponent implements OnInit {
 
   getGrid(): Cell[][] {
     return this.grid;
+  }
+
+  getGridWidth(): number {
+    return this.gridWidth;
+  }
+
+  getGridHeight(): number {
+    return this.gridHeight;
+  }
+
+  clearWalls(): void {
+    for (let i = 0; i < this.gridHeight; i++) {
+      for (let j = 0; j < this.gridWidth; j++) {
+        this.grid[i][j].isWall = false;
+      }
+    }
   }
 
   getCellNeighbours(cell: Cell, diagonal: boolean): Cell[] {

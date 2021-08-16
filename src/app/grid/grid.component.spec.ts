@@ -144,4 +144,17 @@ describe("GridComponent", () => {
     expect(neighbours.some((e) => e.id == 502)).toBeTruthy();
     expect(neighbours.some((e) => e.id == 503)).toBeTruthy();
   });
+
+  it("correctly clears walls", function () {
+    grid.getGrid()[10][7].isWall = true;
+    grid.getGrid()[8][14].isWall = true;
+    grid.getGrid()[2][11].isWall = true;
+    grid.getGrid()[12][6].isWall = true;
+
+    grid.clearWalls();
+
+    expect(
+      grid.getGrid().some((e) => e.some((elt) => elt.isWall == false) == false)
+    ).toBeFalsy();
+  });
 });
