@@ -17,6 +17,6 @@ export class AppComponent {
   }
 
   findPath(algorithm: Algorithm): void {
-    alert("Finding path with " + algorithm);
+    this.grid.findPath(algorithm);
   }
 }

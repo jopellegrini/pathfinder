@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Cell } from "../cell/Cell";
+import { Algorithm } from "../algorithms/AlgorithmsEnum";
 
 @Component({
   selector: "app-grid",
@@ -12,6 +13,14 @@ export class GridComponent implements OnInit {
   private gridWidth: number = 45;
   private gridHeight: number = 30;
   private grid: Cell[][] = [];
+
+  private startX: number = 4;
+  private startY: number = 4;
+  private start: number = 0;
+
+  private endX: number = 25;
+  private endY: number = 10;
+  private end: number = 0;
 
   private isClicking: boolean = false;
   private isBuilding: boolean = true;
@@ -40,8 +49,11 @@ export class GridComponent implements OnInit {
       this.grid.push(row);
     }
 
-    this.grid[4][4].isStart = true;
-    this.grid[10][25].isEnd = true;
+    this.grid[this.startY][this.startX].isStart = true;
+    this.start = this.startY * this.gridWidth + this.startX;
+
+    this.grid[this.endY][this.endX].isEnd = true;
+    this.end = this.endY * this.gridWidth + this.endX;
   }
 
   getGrid(): Cell[][] {
@@ -54,6 +66,20 @@ export class GridComponent implements OnInit {
 
   getGridHeight(): number {
     return this.gridHeight;
+  }
+
+  findPath(algorithm: Algorithm): void {
+    alert("Finding path with " + algorithm);
+  }
+
+  BFS(): Cell[] {
+    let result: Cell[] = [];
+    let visited: boolean[] = new Array(this.gridWidth * this.gridHeight).fill(
+      false
+    );
+    //let queue: Cell[] = [this.];
+
+    return result;
   }
 
   /**
