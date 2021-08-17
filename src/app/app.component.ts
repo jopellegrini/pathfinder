@@ -14,6 +14,7 @@ export class AppComponent {
 
   clearWalls(): void {
     this.grid.clearWalls();
+    this.grid.clearPath();
   }
 
   findPath(algorithm: Algorithm): void {
