@@ -74,8 +74,7 @@ export class GridComponent implements OnInit {
    * Finds and renders path between start and end cells
    */
   findPath(algorithm: Algorithm): void {
-    //this.grid.forEach((row) => row.forEach((cell) => (cell.isPath = false))); // Remove existing path
-    this.clearPath();
+    this.clearPath(); // Remove existing path
 
     // alert("Finding path with " + algorithm);
     if (algorithm == Algorithm.BFS) {
@@ -164,22 +163,14 @@ export class GridComponent implements OnInit {
    * Removes all walls from grid
    */
   clearWalls(): void {
-    for (let i = 0; i < this.gridHeight; i++) {
-      for (let j = 0; j < this.gridWidth; j++) {
-        this.grid[i][j].isWall = false;
-      }
-    }
+    this.grid.forEach((row) => row.forEach((cell) => (cell.isWall = false)));
   }
 
   /**
    * Removes path from grid
    */
   clearPath(): void {
-    for (let i = 0; i < this.gridHeight; i++) {
-      for (let j = 0; j < this.gridWidth; j++) {
-        this.grid[i][j].isPath = false;
-      }
-    }
+    this.grid.forEach((row) => row.forEach((cell) => (cell.isPath = false)));
   }
 
   /**
