@@ -78,7 +78,7 @@ export class GridComponent implements OnInit {
 
     // alert("Finding path with " + algorithm);
     if (algorithm == Algorithm.BFS) {
-      let res = this.BFS(false);
+      let res = this.BFS(true);
       this.showPath(res);
     }
   }
@@ -178,6 +178,10 @@ export class GridComponent implements OnInit {
   getCellNeighbours(cell: Cell, diagonal: boolean): Cell[] {
     let result: Cell[] = [];
 
+    if (cell.x > 0) result.push(this.grid[cell.y][cell.x - 1]); // Left cell
+
+    if (cell.x < this.gridWidth - 1) result.push(this.grid[cell.y][cell.x + 1]); // Right cell
+
     if (cell.y > 0) {
       result.push(this.grid[cell.y - 1][cell.x]); // Top cell
 
@@ -197,10 +201,6 @@ export class GridComponent implements OnInit {
           result.push(this.grid[cell.y + 1][cell.x + 1]); // Bottom right
       }
     }
-
-    if (cell.x > 0) result.push(this.grid[cell.y][cell.x - 1]); // Left cell
-
-    if (cell.x < this.gridWidth - 1) result.push(this.grid[cell.y][cell.x + 1]); // Right cell
 
     return result;
   }
