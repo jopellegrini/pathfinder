@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Cell } from "../cell/Cell";
 import { Algorithm } from "../algorithms/AlgorithmsEnum";
+import { BFS } from "../algorithms/BFS";
 import { Utils } from "../utils/utils";
 
 @Component({
@@ -70,6 +71,22 @@ export class GridComponent implements OnInit {
     return this.gridHeight;
   }
 
+  getStartY(): number {
+    return this.startY;
+  }
+
+  getStartX(): number {
+    return this.startX;
+  }
+
+  getStart(): number {
+    return this.start;
+  }
+
+  getEnd(): number {
+    return this.end;
+  }
+
   /**
    * @param {Algorithm} algorithm - The algorithm to use for pathfinding
    * Finds and renders path between start and end cells
@@ -79,71 +96,9 @@ export class GridComponent implements OnInit {
 
     // alert("Finding path with " + algorithm);
     if (algorithm == Algorithm.BFS) {
-      let res = this.BFS(false);
+      let res = BFS.BFS(this, false);
       this.showPath(res);
     }
-  }
-
-  /**
-   * @param {boolean} diagonal - Whether diagonal connexions between cells must be allowed
-   * @return {Cell[]} An array containing path cells
-   */
-  BFS(diagonal: boolean): Cell[] {
-    let result: Cell[] = [];
-    let visited: boolean[] = new Array(this.gridWidth * this.gridHeight).fill(
-      false
-    );
-
-    let queue: Cell[] = [];
-
-    let startCell: Cell = this.grid[this.startY][this.startX];
-
-    queue.push(startCell);
-
-    visited[this.start] = true;
-
-    let father: number[] = new Array(this.gridWidth * this.gridHeight).fill(-1);
-
-    while (queue.length) {
-      let currentCell: Cell | undefined = queue.pop();
-
-      if (currentCell === undefined) break;
-
-      if (currentCell.isWall) continue;
-
-      let neighbours: Cell[] = this.getCellNeighbours(currentCell, diagonal);
-
-      for (let neighbour of neighbours) {
-        if (!visited[neighbour.id]) {
-          visited[neighbour.id] = true;
-
-          father[neighbour.id] = currentCell.id;
-
-          if (neighbour.id == this.end) {
-            return this.backtrackBFS(father);
-          }
-
-          queue.unshift(neighbour);
-        }
-      }
-    }
-
-    return [];
-  }
-
-  /**
-   * @param {number[]} father - An array of integers linking cells with their fathers
-   * @return {Cell[]} An array containing path cells
-   */
-  backtrackBFS(father: number[]): Cell[] {
-    let path: Cell[] = [];
-    let currentCell = this.end;
-    while (currentCell != this.start && father[currentCell] != -1) {
-      currentCell = father[currentCell];
-
-      path.push(Utils.idToCoords(currentCell, this.gridWidth, this.grid));
-    }
-    return path;
   }
 
   /**
