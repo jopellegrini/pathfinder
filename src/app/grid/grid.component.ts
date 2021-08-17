@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Cell } from "../cell/Cell";
 import { Algorithm } from "../algorithms/AlgorithmsEnum";
+import { Utils } from "../utils/utils";
 
 @Component({
   selector: "app-grid",
@@ -140,11 +141,7 @@ export class GridComponent implements OnInit {
     while (currentCell != this.start && father[currentCell] != -1) {
       currentCell = father[currentCell];
 
-      path.push(
-        this.grid[Math.floor(currentCell / this.gridWidth)][
-          currentCell % this.gridWidth
-        ]
-      );
+      path.push(Utils.idToCoords(currentCell, this.gridWidth, this.grid));
     }
     return path;
   }
