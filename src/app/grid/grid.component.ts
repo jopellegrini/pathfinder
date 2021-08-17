@@ -141,7 +141,7 @@ export class GridComponent implements OnInit {
       currentCell = father[currentCell];
 
       path.push(
-        this.grid[Math.ceil(currentCell / this.gridWidth) - 1][
+        this.grid[Math.floor(currentCell / this.gridWidth)][
           currentCell % this.gridWidth
         ]
       );
