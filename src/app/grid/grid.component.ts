@@ -10,16 +10,16 @@ import { Algorithm } from "../algorithms/AlgorithmsEnum";
 export class GridComponent implements OnInit {
   constructor() {}
 
-  private gridWidth: number = 45;
-  private gridHeight: number = 30;
+  private gridWidth: number = 45; //45
+  private gridHeight: number = 30; //30
   private grid: Cell[][] = [];
 
-  private startX: number = 4;
-  private startY: number = 4;
+  private startX: number = 1;
+  private startY: number = 1;
   private start: number = 0;
 
-  private endX: number = 25;
-  private endY: number = 10;
+  private endX: number = 25; //25
+  private endY: number = 10; //10
   private end: number = 0;
 
   private isClicking: boolean = false;
@@ -43,6 +43,7 @@ export class GridComponent implements OnInit {
           isStart: false,
           isEnd: false,
           isWall: false,
+          isPath: false,
         };
         row.push(cell);
       }
@@ -68,18 +69,94 @@ export class GridComponent implements OnInit {
     return this.gridHeight;
   }
 
+  /**
+   * @param {Algorithm} algorithm - The algorithm to use for pathfinding
+   * Finds and renders path between start and end cells
+   */
   findPath(algorithm: Algorithm): void {
-    alert("Finding path with " + algorithm);
+    this.grid.forEach((row) => row.forEach((cell) => (cell.isPath = false))); // Remove existing path
+
+    // alert("Finding path with " + algorithm);
+    if (algorithm == Algorithm.BFS) {
+      let res = this.BFS(false);
+      this.showPath(res);
+    }
   }
 
-  BFS(): Cell[] {
+  /**
+   * @param {boolean} diagonal - Whether diagonal connexions between cells must be allowed
+   * @return {Cell[]} An array containing path cells
+   */
+  BFS(diagonal: boolean): Cell[] {
     let result: Cell[] = [];
     let visited: boolean[] = new Array(this.gridWidth * this.gridHeight).fill(
       false
     );
-    //let queue: Cell[] = [this.];
 
-    return result;
+    let queue: Cell[] = [];
+
+    let startCell: Cell = this.grid[this.startY][this.startX];
+
+    queue.push(startCell);
+
+    visited[this.start] = true;
+
+    let father: number[] = new Array(this.gridWidth * this.gridHeight).fill(-1);
+
+    while (queue.length) {
+      let currentCell: Cell | undefined = queue.pop();
+
+      if (currentCell === undefined) break;
+
+      if (currentCell.isWall) continue;
+
+      let neighbours: Cell[] = this.getCellNeighbours(currentCell, diagonal);
+
+      for (let neighbour of neighbours) {
+        if (!visited[neighbour.id]) {
+          visited[neighbour.id] = true;
+
+          father[neighbour.id] = currentCell.id;
+
+          if (neighbour.id == this.end) {
+            return this.backtrackBFS(father);
+          }
+
+          queue.unshift(neighbour);
+        }
+      }
+    }
+
+    return [];
+  }
+
+  /**
+   * @param {number[]} father - An array of integers linking cells with their fathers
+   * @return {Cell[]} An array containing path cells
+   */
+  backtrackBFS(father: number[]): Cell[] {
+    let path: Cell[] = [];
+    let currentCell = this.end;
+    while (currentCell != this.start && father[currentCell] != -1) {
+      currentCell = father[currentCell];
+
+      path.push(
+        this.grid[Math.ceil(currentCell / this.gridWidth) - 1][
+          currentCell % this.gridWidth
+        ]
+      );
+    }
+    return path;
+  }
+
+  /**
+   * @param {Cell[]} path - An array containing path cells
+   * Marks all cells on the path as path cells
+   */
+  showPath(path: Cell[]): void {
+    for (let cell of path) {
+      if (!cell.isStart) cell.isPath = true;
+    }
   }
 
   /**
@@ -123,12 +200,14 @@ export class GridComponent implements OnInit {
 
     if (cell.x > 0) result.push(this.grid[cell.y][cell.x - 1]); // Left cell
 
-    if (cell.x < this.gridWidth - 2) result.push(this.grid[cell.y][cell.x + 1]); // Right cell
+    if (cell.x < this.gridWidth - 1) result.push(this.grid[cell.y][cell.x + 1]); // Right cell
 
     return result;
   }
 
   onMouseDown(cell: Cell): void {
+    console.log(cell.id);
+
     this.isClicking = true;
 
     if (cell.isWall) this.isBuilding = false;

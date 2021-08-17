@@ -6,4 +6,5 @@ export interface Cell {
   isStart: boolean;
   isEnd: boolean;
   isWall: boolean;
+  isPath: boolean;
 }

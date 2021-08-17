@@ -22,3 +22,7 @@
 .wall-cell {
   background-color: var(--wall-cell-color);
 }
+
+.path-cell {
+  background-color: var(--path-cell-color);
+}

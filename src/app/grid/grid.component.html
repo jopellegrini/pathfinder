@@ -5,7 +5,8 @@
       [ngClass]="{
         'start-cell': cell.isStart,
         'end-cell': cell.isEnd,
-        'wall-cell': cell.isWall
+        'wall-cell': cell.isWall,
+        'path-cell': cell.isPath
       }"
       (mousedown)="onMouseDown(cell)"
       (mouseup)="onMouseUp()"
