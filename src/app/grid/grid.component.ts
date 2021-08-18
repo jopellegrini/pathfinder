@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Cell } from "../cell/Cell";
-import { Algorithm } from "../algorithms/AlgorithmsEnum";
+import { Algorithm } from "../algorithms/algorithms-enum";
 import { BFS } from "../algorithms/BFS";
 import { Utils } from "../utils/utils";
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Output, EventEmitter } from "@angular/core";
-import { Algorithm } from "../algorithms/AlgorithmsEnum";
+import { Algorithm } from "../algorithms/algorithms-enum";
 
 @Component({
   selector: "app-header",

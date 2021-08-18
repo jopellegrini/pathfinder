@@ -1,4 +1,5 @@
 import { Cell } from "../cell/Cell";
+import { GridComponent } from "../grid/grid.component";
 
 export class Utils {
   /**

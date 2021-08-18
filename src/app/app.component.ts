@@ -1,6 +1,6 @@
 import { Component, ViewChild } from "@angular/core";
 import { GridComponent } from "./grid/grid.component";
-import { Algorithm } from "./algorithms/AlgorithmsEnum";
+import { Algorithm } from "./algorithms/algorithms-enum";
 
 @Component({
   selector: "app-root",
