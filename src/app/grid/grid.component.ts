@@ -28,6 +28,8 @@ export class GridComponent implements OnInit {
   private isBuilding: boolean = true;
   private allowDiagonal: boolean = false;
 
+  private animateDelay: number = 7;
+
   ngOnInit(): void {
     this.initGrid();
   }
@@ -109,8 +111,10 @@ export class GridComponent implements OnInit {
   showPath(path: Cell[]): void {
     if (path.length == 0) alert("No path could be found");
 
-    for (let cell of path) {
-      if (!cell.isStart) cell.isPath = true;
+    for (let i = 0; i < path.length; i++) {
+      setTimeout(function () {
+        if (!path[i].isStart) path[i].isPath = true;
+      }, i * this.animateDelay);
     }
   }
 

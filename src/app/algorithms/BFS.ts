@@ -66,6 +66,6 @@ export class BFS {
         Utils.idToCoords(currentCell, grid.getGridWidth(), grid.getGrid())
       );
     }
-    return path;
+    return path.reverse();
   }
 }
