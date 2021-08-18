@@ -179,6 +179,13 @@ export class GridComponent implements OnInit {
   }
 
   /**
+   * Sets allowDiagonal property
+   */
+  switchShowExplored(showExplored: boolean): void {
+    this.showExplored = showExplored;
+  }
+
+  /**
    * Randomly places walls on the grid
    */
   generateRandomMaze(): void {

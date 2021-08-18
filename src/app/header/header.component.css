@@ -81,7 +81,7 @@ nav > button.main_btn:hover {
   padding-left: 0.4em;
 }
 
-.diagonals-checkbox-ctn {
+.switch-checkbox-ctn {
   margin-top: 2em;
   display: flex;
   flex-direction: row;
@@ -89,7 +89,7 @@ nav > button.main_btn:hover {
   justify-content: space-between;
 }
 
-.diagonals-checkbox-ctn input[type="checkbox"] {
+.switch-checkbox-ctn input[type="checkbox"] {
   height: 0;
   width: 0;
   visibility: hidden;
@@ -99,9 +99,10 @@ nav > button.main_btn:hover {
   font-size: 1em !important;
 }
 
-.diagonals-checkbox-ctn label.switch-label {
+.switch-checkbox-ctn label.switch-label {
   cursor: pointer;
   width: 3em;
+  min-width: 3em;
   height: 1.6em;
   background: grey;
   display: block;
@@ -109,7 +110,7 @@ nav > button.main_btn:hover {
   position: relative;
 }
 
-.diagonals-checkbox-ctn label.switch-label:after {
+.switch-checkbox-ctn label.switch-label:after {
   content: "";
   position: absolute;
   top: 0.1em;
@@ -121,11 +122,11 @@ nav > button.main_btn:hover {
   transition: 0.2s;
 }
 
-.diagonals-checkbox-ctn input:checked + label.switch-label {
+.switch-checkbox-ctn input:checked + label.switch-label {
   background: #bada55;
 }
 
-.diagonals-checkbox-ctn input:checked + label.switch-label:after {
+.switch-checkbox-ctn input:checked + label.switch-label:after {
   left: calc(100% - 0.1em);
   transform: translateX(-100%);
 }

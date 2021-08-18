@@ -42,7 +42,7 @@
       />
       <label for="algo_select_a_inp">A*</label>
     </div>
-    <div class="diagonals-checkbox-ctn">
+    <div class="switch-checkbox-ctn">
       <label for="allow_diagonals" class="switch-text-label"
         >Allow diagonals :</label
       >
@@ -53,6 +53,18 @@
         (change)="switchAllowDiag($event)"
       />
       <label for="allow_diagonals" class="switch-label"></label>
+    </div>
+    <div class="switch-checkbox-ctn">
+      <label for="show_explored" class="switch-text-label"
+        >Show explored :</label
+      >
+      <input
+        type="checkbox"
+        id="show_explored"
+        name="show_explored"
+        (change)="switchShowExplored($event)"
+      />
+      <label for="show_explored" class="switch-label"></label>
     </div>
   </nav>
 </header>

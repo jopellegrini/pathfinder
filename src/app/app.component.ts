@@ -29,4 +29,8 @@ export class AppComponent {
   switchDiag(allowDiagonal: boolean): void {
     this.grid.switchDiag(allowDiagonal);
   }
+
+  switchShowExplored(showExplored: boolean): void {
+    this.grid.switchShowExplored(showExplored);
+  }
 }
