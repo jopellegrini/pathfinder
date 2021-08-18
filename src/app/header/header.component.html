@@ -46,7 +46,12 @@
       <label for="allow_diagonals" class="switch-text-label"
         >Allow diagonals</label
       >
-      <input type="checkbox" id="allow_diagonals" name="allow_diagonals" />
+      <input
+        type="checkbox"
+        id="allow_diagonals"
+        name="allow_diagonals"
+        (change)="switchAllowDiag($event)"
+      />
       <label for="allow_diagonals" class="switch-label"></label>
     </div>
   </nav>

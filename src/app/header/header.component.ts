@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() clickedOnClearEvent = new EventEmitter<string>();
   @Output() runEvent = new EventEmitter<Algorithm>();
+  @Output() switchDiagEvent = new EventEmitter<boolean>();
 
   private algorithm: Algorithm = Algorithm.BFS;
 
@@ -42,5 +43,9 @@ export class HeaderComponent implements OnInit {
       default:
         this.algorithm = Algorithm.BFS;
     }
+  }
+
+  switchAllowDiag(event: any): void {
+    this.switchDiagEvent.emit(event.target.checked);
   }
 }

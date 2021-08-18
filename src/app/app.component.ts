@@ -20,4 +20,8 @@ export class AppComponent {
   findPath(algorithm: Algorithm): void {
     this.grid.findPath(algorithm);
   }
+
+  switchDiag(allowDiagonal: boolean): void {
+    this.grid.switchDiag(allowDiagonal);
+  }
 }

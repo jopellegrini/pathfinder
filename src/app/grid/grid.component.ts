@@ -26,6 +26,7 @@ export class GridComponent implements OnInit {
 
   private isClicking: boolean = false;
   private isBuilding: boolean = true;
+  private allowDiagonal: boolean = false;
 
   ngOnInit(): void {
     this.initGrid();
@@ -96,7 +97,7 @@ export class GridComponent implements OnInit {
 
     // alert("Finding path with " + algorithm);
     if (algorithm == Algorithm.BFS) {
-      let res = BFS.BFS(this, false);
+      let res = BFS.BFS(this, this.allowDiagonal);
       this.showPath(res);
     }
   }
@@ -123,6 +124,10 @@ export class GridComponent implements OnInit {
    */
   clearPath(): void {
     this.grid.forEach((row) => row.forEach((cell) => (cell.isPath = false)));
+  }
+
+  switchDiag(allowDiagonal: boolean): void {
+    this.allowDiagonal = allowDiagonal;
   }
 
   /**
