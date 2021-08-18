@@ -75,8 +75,7 @@ nav > button.main_btn:hover {
   background-color: #fff;
 }
 
-.algo_select-ctn > label,
-.diagonals-checkbox-ctn > label {
+.algo_select-ctn > label {
   font-size: 1.2em;
   padding-left: 0.4em;
 }
@@ -86,6 +85,7 @@ nav > button.main_btn:hover {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
 .diagonals-checkbox-ctn input[type="checkbox"] {
@@ -100,8 +100,8 @@ nav > button.main_btn:hover {
 
 .diagonals-checkbox-ctn label.switch-label {
   cursor: pointer;
-  width: 2.2em;
-  height: 1.2em;
+  width: 3em;
+  height: 1.6em;
   background: grey;
   display: block;
   border-radius: 1em;
@@ -113,8 +113,8 @@ nav > button.main_btn:hover {
   position: absolute;
   top: 0.1em;
   left: 0.1em;
-  width: 1em;
-  height: 1em;
+  width: 1.4em;
+  height: 1.4em;
   background: #fff;
   border-radius: 50%;
   transition: 0.2s;
