@@ -7,4 +7,5 @@ export interface Cell {
   isEnd: boolean;
   isWall: boolean;
   isPath: boolean;
+  wasExplored: boolean;
 }

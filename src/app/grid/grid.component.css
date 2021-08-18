@@ -26,3 +26,7 @@
 .path-cell {
   background-color: var(--path-cell-color);
 }
+
+.explored-cell {
+  background-color: var(--explored-cell-color);
+}

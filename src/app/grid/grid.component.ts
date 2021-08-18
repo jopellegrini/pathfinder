@@ -27,8 +27,12 @@ export class GridComponent implements OnInit {
   private isClicking: boolean = false;
   private isBuilding: boolean = true;
   private allowDiagonal: boolean = false;
+  private showExplored: boolean = false;
 
   private animateDelay: number = 7;
+  private animateExploredDelay: number = 2;
+
+  private exploredCells: Cell[] = [];
 
   ngOnInit(): void {
     this.initGrid();
@@ -49,6 +53,7 @@ export class GridComponent implements OnInit {
           isEnd: false,
           isWall: false,
           isPath: false,
+          wasExplored: false,
         };
         row.push(cell);
       }
@@ -90,17 +95,22 @@ export class GridComponent implements OnInit {
     return this.end;
   }
 
+  addExploredCell(cell: Cell): void {
+    this.exploredCells.push(cell);
+  }
+
   /**
    * @param {Algorithm} algorithm - The algorithm to use for pathfinding
    * Finds and renders path between start and end cells
    */
   findPath(algorithm: Algorithm): void {
     this.clearPath(); // Remove existing path
+    this.clearExplored(); // Remove existing explored cells
 
     // alert("Finding path with " + algorithm);
     if (algorithm == Algorithm.BFS) {
-      let res = BFS.BFS(this, this.allowDiagonal);
-      this.showPath(res);
+      let res = BFS.BFS(this, this.allowDiagonal, this.showExplored);
+      this.showPath(res, this.exploredCells);
     }
   }
 
@@ -108,13 +118,24 @@ export class GridComponent implements OnInit {
    * @param {Cell[]} path - An array containing path cells
    * Marks all cells on the path as path cells
    */
-  showPath(path: Cell[]): void {
+  showPath(path: Cell[], explored: Cell[]): void {
     if (path.length == 0) alert("No path could be found");
 
-    for (let i = 0; i < path.length; i++) {
+    let exploredCount: number = 0;
+
+    for (; exploredCount < explored.length; exploredCount++) {
+      let currentCell: Cell = explored[exploredCount];
       setTimeout(function () {
-        if (!path[i].isStart) path[i].isPath = true;
-      }, i * this.animateDelay);
+        currentCell.wasExplored = true;
+      }, exploredCount * this.animateExploredDelay);
+    }
+
+    let totalExploredTime = this.animateExploredDelay * exploredCount;
+
+    for (let j = 0; j < path.length; j++) {
+      setTimeout(function () {
+        if (!path[j].isStart) path[j].isPath = true;
+      }, totalExploredTime + j * this.animateDelay);
     }
   }
 
@@ -133,6 +154,16 @@ export class GridComponent implements OnInit {
   }
 
   /**
+   * Removes explored cells from grid
+   */
+  clearExplored(): void {
+    this.exploredCells = [];
+    this.grid.forEach((row) =>
+      row.forEach((cell) => (cell.wasExplored = false))
+    );
+  }
+
+  /**
    * Sets allowDiagonal property
    */
   switchDiag(allowDiagonal: boolean): void {
@@ -145,6 +176,7 @@ export class GridComponent implements OnInit {
   generateRandomMaze(): void {
     this.clearPath();
     this.clearWalls();
+    this.clearExplored();
 
     this.grid.forEach((row) =>
       row.forEach(function (cell) {
@@ -199,6 +231,7 @@ export class GridComponent implements OnInit {
     else {
       this.isBuilding = true;
       this.clearPath();
+      this.clearExplored();
     }
 
     if (!cell.isStart && !cell.isEnd) cell.isWall = !cell.isWall;

@@ -7,8 +7,13 @@ export class BFS {
    * @param {boolean} diagonal - Whether diagonal connexions between cells must be allowed
    * @return {Cell[]} An array containing path cells
    */
-  static BFS(grid: GridComponent, diagonal: boolean): Cell[] {
+  static BFS(
+    grid: GridComponent,
+    diagonal: boolean,
+    markExplored: boolean
+  ): Cell[] {
     let result: Cell[] = [];
+
     let visited: boolean[] = new Array(
       grid.getGridWidth() * grid.getGridHeight()
     ).fill(false);
@@ -45,6 +50,10 @@ export class BFS {
           }
 
           queue.unshift(neighbour);
+
+          if (markExplored) {
+            grid.addExploredCell(neighbour);
+          }
         }
       }
     }

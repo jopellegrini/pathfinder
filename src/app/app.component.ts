@@ -19,6 +19,7 @@ export class AppComponent {
   clearWalls(): void {
     this.grid.clearWalls();
     this.grid.clearPath();
+    this.grid.clearExplored();
   }
 
   generateRandomMaze(): void {
