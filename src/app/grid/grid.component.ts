@@ -107,6 +107,8 @@ export class GridComponent implements OnInit {
    * Marks all cells on the path as path cells
    */
   showPath(path: Cell[]): void {
+    if (path.length == 0) alert("No path could be found");
+
     for (let cell of path) {
       if (!cell.isStart) cell.isPath = true;
     }
