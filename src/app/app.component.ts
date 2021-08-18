@@ -12,13 +12,17 @@ export class AppComponent {
 
   @ViewChild(GridComponent) grid!: GridComponent;
 
+  findPath(algorithm: Algorithm): void {
+    this.grid.findPath(algorithm);
+  }
+
   clearWalls(): void {
     this.grid.clearWalls();
     this.grid.clearPath();
   }
 
-  findPath(algorithm: Algorithm): void {
-    this.grid.findPath(algorithm);
+  generateRandomMaze(): void {
+    this.grid.generateRandomMaze();
   }
 
   switchDiag(allowDiagonal: boolean): void {

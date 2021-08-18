@@ -126,8 +126,29 @@ export class GridComponent implements OnInit {
     this.grid.forEach((row) => row.forEach((cell) => (cell.isPath = false)));
   }
 
+  /**
+   * Sets allowDiagonal property
+   */
   switchDiag(allowDiagonal: boolean): void {
     this.allowDiagonal = allowDiagonal;
+  }
+
+  /**
+   * Randomly places walls on the grid
+   */
+  generateRandomMaze(): void {
+    this.clearPath();
+    this.clearWalls();
+
+    this.grid.forEach((row) =>
+      row.forEach(function (cell) {
+        if (cell.isStart || cell.isEnd) return;
+
+        if (Utils.getRandomInt(0, 5) == 4) {
+          cell.isWall = true;
+        }
+      })
+    );
   }
 
   /**

@@ -10,20 +10,25 @@ import { Algorithm } from "../algorithms/AlgorithmsEnum";
 export class HeaderComponent implements OnInit {
   constructor() {}
 
-  @Output() clickedOnClearEvent = new EventEmitter<string>();
   @Output() runEvent = new EventEmitter<Algorithm>();
+  @Output() clickedOnClearEvent = new EventEmitter<string>();
+  @Output() generateRandomMaze = new EventEmitter<boolean>();
   @Output() switchDiagEvent = new EventEmitter<boolean>();
 
   private algorithm: Algorithm = Algorithm.BFS;
 
   ngOnInit(): void {}
 
+  emitRun() {
+    this.runEvent.emit(this.algorithm);
+  }
+
   emitClearWalls() {
     this.clickedOnClearEvent.emit();
   }
 
-  emitRun() {
-    this.runEvent.emit(this.algorithm);
+  emitRandomMaze() {
+    this.generateRandomMaze.emit();
   }
 
   changeAlgo(algo: string) {
