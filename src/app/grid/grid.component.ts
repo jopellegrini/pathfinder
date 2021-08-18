@@ -95,6 +95,14 @@ export class GridComponent implements OnInit {
     return this.end;
   }
 
+  allowsDiagonal(): boolean {
+    return this.allowDiagonal;
+  }
+
+  showsExplored(): boolean {
+    return this.showExplored;
+  }
+
   addExploredCell(cell: Cell): void {
     this.exploredCells.push(cell);
   }
@@ -109,7 +117,7 @@ export class GridComponent implements OnInit {
 
     // alert("Finding path with " + algorithm);
     if (algorithm == Algorithm.BFS) {
-      let res = BFS.BFS(this, this.allowDiagonal, this.showExplored);
+      let res = BFS.BFS(this);
       this.showPath(res, this.exploredCells);
     }
   }
