@@ -212,26 +212,36 @@ export class GridComponent implements OnInit {
   getCellNeighbours(cell: Cell, diagonal: boolean): Cell[] {
     let result: Cell[] = [];
 
-    if (cell.x > 0) result.push(this.grid[cell.y][cell.x - 1]); // Left cell
+    if (cell.x > 0 && !this.grid[cell.y][cell.x - 1].isWall)
+      result.push(this.grid[cell.y][cell.x - 1]); // Left cell
 
-    if (cell.x < this.gridWidth - 1) result.push(this.grid[cell.y][cell.x + 1]); // Right cell
+    if (cell.x < this.gridWidth - 1 && !this.grid[cell.y][cell.x + 1].isWall)
+      result.push(this.grid[cell.y][cell.x + 1]); // Right cell
 
-    if (cell.y > 0) {
+    if (cell.y > 0 && !this.grid[cell.y - 1][cell.x].isWall) {
       result.push(this.grid[cell.y - 1][cell.x]); // Top cell
 
       if (diagonal) {
-        if (cell.x > 0) result.push(this.grid[cell.y - 1][cell.x - 1]); // Top left
-        if (cell.x < this.gridWidth - 2)
+        if (cell.x > 0 && !this.grid[cell.y - 1][cell.x - 1].isWall)
+          result.push(this.grid[cell.y - 1][cell.x - 1]); // Top left
+        if (
+          cell.x < this.gridWidth - 2 &&
+          !this.grid[cell.y - 1][cell.x + 1].isWall
+        )
           result.push(this.grid[cell.y - 1][cell.x + 1]); // Top right
       }
     }
 
-    if (cell.y < this.gridHeight - 1) {
+    if (cell.y < this.gridHeight - 1 && !this.grid[cell.y + 1][cell.x].isWall) {
       result.push(this.grid[cell.y + 1][cell.x]); // Bottom cell
 
       if (diagonal) {
-        if (cell.x > 0) result.push(this.grid[cell.y + 1][cell.x - 1]); // Bottom left
-        if (cell.x < this.gridWidth - 2)
+        if (cell.x > 0 && !this.grid[cell.y + 1][cell.x - 1].isWall)
+          result.push(this.grid[cell.y + 1][cell.x - 1]); // Bottom left
+        if (
+          cell.x < this.gridWidth - 2 &&
+          !this.grid[cell.y + 1][cell.x + 1].isWall
+        )
           result.push(this.grid[cell.y + 1][cell.x + 1]); // Bottom right
       }
     }

@@ -31,8 +31,6 @@ export class BFS {
 
       if (currentCell === undefined) break;
 
-      if (currentCell.isWall) continue;
-
       let neighbours: Cell[] = grid.getCellNeighbours(
         currentCell,
         grid.allowsDiagonal()
