@@ -75,7 +75,56 @@ nav > button.main_btn:hover {
   background-color: #fff;
 }
 
-.algo_select-ctn > label {
+.algo_select-ctn > label,
+.diagonals-checkbox-ctn > label {
   font-size: 1.2em;
   padding-left: 0.4em;
+}
+
+.diagonals-checkbox-ctn {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.diagonals-checkbox-ctn input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.switch-text-label {
+  font-size: 1em !important;
+}
+
+.diagonals-checkbox-ctn label.switch-label {
+  cursor: pointer;
+  width: 2.2em;
+  height: 1.2em;
+  background: grey;
+  display: block;
+  border-radius: 1em;
+  position: relative;
+}
+
+.diagonals-checkbox-ctn label.switch-label:after {
+  content: "";
+  position: absolute;
+  top: 0.1em;
+  left: 0.1em;
+  width: 1em;
+  height: 1em;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.diagonals-checkbox-ctn input:checked + label.switch-label {
+  background: #bada55;
+}
+
+.diagonals-checkbox-ctn input:checked + label.switch-label:after {
+  left: calc(100% - 0.1em);
+  transform: translateX(-100%);
 }
