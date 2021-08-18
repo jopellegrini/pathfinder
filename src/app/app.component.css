@@ -5,10 +5,12 @@
 }
 
 .header-ctn {
+  position: fixed;
+  height: 100%;
   width: 15%;
   min-width: 10em;
 }
 
 .grid-ctn {
-  width: 85%;
+  margin-left: max(15%, 10em);
 }

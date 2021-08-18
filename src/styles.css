@@ -20,8 +20,6 @@
 
 html,
 body {
-  height: 100%;
   margin: 0;
   font-family: "roboto";
-  overflow-y: hidden;
 }

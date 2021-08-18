@@ -8,7 +8,7 @@
   border-top: 0;
   width: 25px;
   height: 25px;
-  resize: both;
+  min-width: 25px;
 }
 
 .start-cell {
