@@ -187,12 +187,13 @@ export class GridComponent implements OnInit {
   }
 
   onMouseDown(cell: Cell): void {
-    console.log(cell.id);
-
     this.isClicking = true;
 
     if (cell.isWall) this.isBuilding = false;
-    else this.isBuilding = true;
+    else {
+      this.isBuilding = true;
+      this.clearPath();
+    }
 
     if (!cell.isStart && !cell.isEnd) cell.isWall = !cell.isWall;
   }
