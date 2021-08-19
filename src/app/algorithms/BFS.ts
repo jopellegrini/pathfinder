@@ -7,7 +7,7 @@ export class BFS {
    * @param {boolean} diagonal - Whether diagonal connexions between cells must be allowed
    * @return {Cell[]} An array containing path cells
    */
-  static BFS(grid: GridComponent): Cell[] {
+  BFS(grid: GridComponent): Cell[] {
     let result: Cell[] = [];
 
     let visited: boolean[] = new Array(

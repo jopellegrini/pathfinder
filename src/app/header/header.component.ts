@@ -37,9 +37,6 @@ export class HeaderComponent implements OnInit {
       case "BFS":
         this.algorithm = Algorithm.BFS;
         break;
-      case "DFS":
-        this.algorithm = Algorithm.DFS;
-        break;
       case "Dijkstra":
         this.algorithm = Algorithm.Dijkstra;
         break;

@@ -117,7 +117,8 @@ export class GridComponent implements OnInit {
 
     // alert("Finding path with " + algorithm);
     if (algorithm == Algorithm.BFS) {
-      let res = BFS.BFS(this);
+      let bfs: BFS = new BFS();
+      let res = bfs.BFS(this);
       this.showPath(res, this.exploredCells);
     }
   }
