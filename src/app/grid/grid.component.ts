@@ -3,6 +3,7 @@ import { Cell } from "../cell/Cell";
 import { Algorithm } from "../algorithms/algorithms-enum";
 import { BFS } from "../algorithms/BFS";
 import { Dijkstra } from "../algorithms/dijkstra";
+import { AStar } from "../algorithms/astar";
 import { Utils } from "../utils/utils";
 
 @Component({
@@ -124,6 +125,10 @@ export class GridComponent implements OnInit {
     } else if (algorithm == Algorithm.Dijkstra) {
       let dijkstra: Dijkstra = new Dijkstra();
       let res = dijkstra.Dijkstra(this);
+      this.showPath(res, this.exploredCells);
+    } else if (algorithm == Algorithm.AStar) {
+      let astar: AStar = new AStar();
+      let res = astar.AStar(this);
       this.showPath(res, this.exploredCells);
     }
   }
