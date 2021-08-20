@@ -32,7 +32,12 @@ export class Dijkstra {
         grid.getGrid()
       );
 
-      if (grid.showsExplored() && !currentCell.isStart && !currentCell.isEnd) {
+      if (
+        grid.showsExplored() &&
+        !currentCell.isStart &&
+        !currentCell.isEnd &&
+        !currentCell.isWall
+      ) {
         grid.addExploredCell(currentCell);
       }
 

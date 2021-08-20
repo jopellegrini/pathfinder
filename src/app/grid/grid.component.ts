@@ -230,8 +230,9 @@ export class GridComponent implements OnInit {
       if (diagonal) {
         if (cell.x > 0 && !this.grid[cell.y - 1][cell.x - 1].isWall)
           result.push(this.grid[cell.y - 1][cell.x - 1]); // Top left
+
         if (
-          cell.x < this.gridWidth - 2 &&
+          cell.x < this.gridWidth - 1 &&
           !this.grid[cell.y - 1][cell.x + 1].isWall
         )
           result.push(this.grid[cell.y - 1][cell.x + 1]); // Top right
@@ -244,8 +245,9 @@ export class GridComponent implements OnInit {
       if (diagonal) {
         if (cell.x > 0 && !this.grid[cell.y + 1][cell.x - 1].isWall)
           result.push(this.grid[cell.y + 1][cell.x - 1]); // Bottom left
+
         if (
-          cell.x < this.gridWidth - 2 &&
+          cell.x < this.gridWidth - 1 &&
           !this.grid[cell.y + 1][cell.x + 1].isWall
         )
           result.push(this.grid[cell.y + 1][cell.x + 1]); // Bottom right
