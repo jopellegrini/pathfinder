@@ -47,11 +47,23 @@ export class Dijkstra {
       );
 
       for (let neighbour of neighbours) {
+        let cost: number = 1;
+
+        if (grid.allowsDiagonal()) {
+          if (
+            neighbour.id == currentCell.id - grid.getGridWidth() - 1 ||
+            neighbour.id == currentCell.id - grid.getGridWidth() + 1 ||
+            neighbour.id == currentCell.id + grid.getGridWidth() - 1 ||
+            neighbour.id == currentCell.id + grid.getGridWidth() + 1
+          )
+            cost = 1.1;
+        }
+
         if (
           !visited[neighbour.id] &&
-          this.dist[neighbour.id] > this.dist[closest] + 1
+          this.dist[neighbour.id] > this.dist[closest] + cost
         ) {
-          this.dist[neighbour.id] = this.dist[closest] + 1;
+          this.dist[neighbour.id] = this.dist[closest] + cost;
           father[neighbour.id] = closest;
         }
       }
