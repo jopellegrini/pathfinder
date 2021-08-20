@@ -125,7 +125,7 @@ nav > button.main_btn:hover {
 }
 
 .switch-checkbox-ctn input:checked + label.switch-label {
-  background: #bada55;
+  background: #b2db2c;
 }
 
 .switch-checkbox-ctn input:checked + label.switch-label:after {
