@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Cell } from "../cell/Cell";
 import { Algorithm } from "../algorithms/algorithms-enum";
 import { BFS } from "../algorithms/BFS";
+import { Dijkstra } from "../algorithms/dijkstra";
 import { Utils } from "../utils/utils";
 
 @Component({
@@ -119,6 +120,10 @@ export class GridComponent implements OnInit {
     if (algorithm == Algorithm.BFS) {
       let bfs: BFS = new BFS();
       let res = bfs.BFS(this);
+      this.showPath(res, this.exploredCells);
+    } else if (algorithm == Algorithm.Dijkstra) {
+      let dijkstra: Dijkstra = new Dijkstra();
+      let res = dijkstra.Dijkstra(this);
       this.showPath(res, this.exploredCells);
     }
   }
