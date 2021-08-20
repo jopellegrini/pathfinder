@@ -8,7 +8,11 @@ export class Utils {
    * @param {Cell[][]} grid - The grid containing cells
    * @return {Cell} The cell matching the cellId
    */
-  static idToCoords(cellId: number, gridWidth: number, grid: Cell[][]): Cell {
+  static getCellFromId(
+    cellId: number,
+    gridWidth: number,
+    grid: Cell[][]
+  ): Cell {
     return grid[Math.floor(cellId / gridWidth)][cellId % gridWidth];
   }
 

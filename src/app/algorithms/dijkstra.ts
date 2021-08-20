@@ -26,7 +26,7 @@ export class Dijkstra {
 
       visited[closest] = true;
 
-      let currentCell: Cell = Utils.idToCoords(
+      let currentCell: Cell = Utils.getCellFromId(
         closest,
         grid.getGridWidth(),
         grid.getGrid()

@@ -14,7 +14,7 @@ export class AlgorithmUtils {
       currentCell = father[currentCell];
 
       path.push(
-        Utils.idToCoords(currentCell, grid.getGridWidth(), grid.getGrid())
+        Utils.getCellFromId(currentCell, grid.getGridWidth(), grid.getGrid())
       );
     }
     return path.reverse();
