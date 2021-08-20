@@ -41,22 +41,18 @@ export class Dijkstra {
         grid.addExploredCell(currentCell);
       }
 
-      let neighbours: Cell[] = grid.getCellNeighbours(
+      let neighbours = grid.getCellNeighboursDetailed(
         currentCell,
         grid.allowsDiagonal()
       );
 
-      for (let neighbour of neighbours) {
+      for (let n of neighbours) {
+        let [neighbour, isNeighbourDiagonal] = n;
+
         let cost: number = 1;
 
         if (grid.allowsDiagonal()) {
-          if (
-            neighbour.id == currentCell.id - grid.getGridWidth() - 1 ||
-            neighbour.id == currentCell.id - grid.getGridWidth() + 1 ||
-            neighbour.id == currentCell.id + grid.getGridWidth() - 1 ||
-            neighbour.id == currentCell.id + grid.getGridWidth() + 1
-          )
-            cost = 1.1;
+          if (isNeighbourDiagonal) cost = 1.1;
         }
 
         if (

@@ -262,6 +262,53 @@ export class GridComponent implements OnInit {
     return result;
   }
 
+  /**
+   * @param {Cell} cell - The cell whose neighbours must be found
+   * @param {boolean} diagonal - Whether the result must contain diagonal cells
+   * @return {Cell[]} An array of tuples containing neighbours cells and whether they are diagonal
+   */
+  getCellNeighboursDetailed(cell: Cell, diagonal: boolean): [Cell, boolean][] {
+    let result: [Cell, boolean][] = [];
+
+    if (cell.x > 0 && !this.grid[cell.y][cell.x - 1].isWall)
+      result.push([this.grid[cell.y][cell.x - 1], false]); // Left cell
+
+    if (cell.x < this.gridWidth - 1 && !this.grid[cell.y][cell.x + 1].isWall)
+      result.push([this.grid[cell.y][cell.x + 1], false]); // Right cell
+
+    if (cell.y > 0 && !this.grid[cell.y - 1][cell.x].isWall) {
+      result.push([this.grid[cell.y - 1][cell.x], false]); // Top cell
+
+      if (diagonal) {
+        if (cell.x > 0 && !this.grid[cell.y - 1][cell.x - 1].isWall)
+          result.push([this.grid[cell.y - 1][cell.x - 1], true]); // Top left
+
+        if (
+          cell.x < this.gridWidth - 1 &&
+          !this.grid[cell.y - 1][cell.x + 1].isWall
+        )
+          result.push([this.grid[cell.y - 1][cell.x + 1], true]); // Top right
+      }
+    }
+
+    if (cell.y < this.gridHeight - 1 && !this.grid[cell.y + 1][cell.x].isWall) {
+      result.push([this.grid[cell.y + 1][cell.x], false]); // Bottom cell
+
+      if (diagonal) {
+        if (cell.x > 0 && !this.grid[cell.y + 1][cell.x - 1].isWall)
+          result.push([this.grid[cell.y + 1][cell.x - 1], true]); // Bottom left
+
+        if (
+          cell.x < this.gridWidth - 1 &&
+          !this.grid[cell.y + 1][cell.x + 1].isWall
+        )
+          result.push([this.grid[cell.y + 1][cell.x + 1], true]); // Bottom right
+      }
+    }
+
+    return result;
+  }
+
   onMouseDown(cell: Cell): void {
     this.isClicking = true;
 
