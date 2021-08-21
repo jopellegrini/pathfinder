@@ -17,6 +17,8 @@ describe("GridComponent", () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GridComponent);
     grid = fixture.componentInstance;
+    grid.setGridWidth(45);
+    grid.setGridHeight(30);
     fixture.detectChanges();
 
     grid.initGrid();

@@ -81,6 +81,14 @@ export class GridComponent implements OnInit {
     return this.gridHeight;
   }
 
+  setGridWidth(width: number): void {
+    this.gridWidth = width;
+  }
+
+  setGridHeight(height: number): void {
+    this.gridHeight = height;
+  }
+
   getStartY(): number {
     return this.startY;
   }
