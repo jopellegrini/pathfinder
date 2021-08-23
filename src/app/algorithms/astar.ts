@@ -19,10 +19,12 @@ export class AStar {
       grid.getGridWidth() * grid.getGridHeight()
     ).fill(-1);
 
-    this.dist[grid.getStart()] = 0;
+    this.dist[grid.getStart()] =
+      0 +
+      this.getHeuristic(grid.getStart(), grid.getEnd(), grid.getGridWidth());
 
     for (let i = 0; i < this.dist.length; i++) {
-      let closest = this.minDist(visited);
+      let closest = this.minDist(visited, grid.getGridWidth());
 
       visited[closest] = true;
 
@@ -57,9 +59,15 @@ export class AStar {
 
         if (
           !visited[neighbour.id] &&
-          this.dist[neighbour.id] > this.dist[closest] + cost
+          this.dist[neighbour.id] >
+            this.dist[closest] +
+              cost +
+              this.getHeuristic(neighbour.id, closest, grid.getGridWidth())
         ) {
-          this.dist[neighbour.id] = this.dist[closest] + cost;
+          this.dist[neighbour.id] =
+            this.dist[closest] +
+            cost +
+            this.getHeuristic(neighbour.id, closest, grid.getGridWidth());
           father[neighbour.id] = closest;
         }
       }
@@ -68,13 +76,16 @@ export class AStar {
     return AlgorithmUtils.backtrackPath(father, grid);
   }
 
-  minDist(visited: boolean[]): number {
+  minDist(visited: boolean[], gridWidth: number): number {
     let min = Infinity;
     let minIndex = 0;
 
     for (let i = 0; i < this.dist.length; i++) {
-      if (this.dist[i] < min && !visited[i]) {
-        min = this.dist[i];
+      if (
+        this.dist[i] + this.getHeuristic(i, minIndex, gridWidth) < min &&
+        !visited[i]
+      ) {
+        min = this.dist[i] + this.getHeuristic(i, minIndex, gridWidth);
         minIndex = i;
       }
     }
