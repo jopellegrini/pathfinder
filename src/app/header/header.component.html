@@ -6,32 +6,35 @@
     <button (click)="emitRandomMaze()">Random</button>
     <p>Algorithm :</p>
     <div class="algo_select-ctn">
-      <input
-        type="radio"
-        name="algo_select"
-        id="algo_select_bfs_inp"
-        checked="checked"
-        (change)="changeAlgo('BFS')"
-      />
-      <label for="algo_select_bfs_inp">BFS</label>
+      <label for="algo_select_bfs_inp">
+        <input
+          type="radio"
+          name="algo_select"
+          id="algo_select_bfs_inp"
+          checked="checked"
+          (change)="changeAlgo('BFS')"
+        /><span>BFS</span></label
+      >
     </div>
     <div class="algo_select-ctn">
-      <input
-        type="radio"
-        name="algo_select"
-        id="algo_select_dijkstra_inp"
-        (change)="changeAlgo('Dijkstra')"
-      />
-      <label for="algo_select_dijkstra_inp">Dijkstra</label>
+      <label for="algo_select_dijkstra_inp"
+        ><input
+          type="radio"
+          name="algo_select"
+          id="algo_select_dijkstra_inp"
+          (change)="changeAlgo('Dijkstra')"
+        /><span>Dijkstra</span></label
+      >
     </div>
     <div class="algo_select-ctn">
-      <input
-        type="radio"
-        name="algo_select"
-        id="algo_select_a_inp"
-        (change)="changeAlgo('A*')"
-      />
-      <label for="algo_select_a_inp">A*</label>
+      <label for="algo_select_a_inp"
+        ><input
+          type="radio"
+          name="algo_select"
+          id="algo_select_a_inp"
+          (change)="changeAlgo('A*')"
+        /><span>A*</span></label
+      >
     </div>
     <div class="switch-checkbox-ctn">
       <label for="allow_diagonals" class="switch-text-label"

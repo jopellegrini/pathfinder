@@ -54,6 +54,52 @@ nav > button.main_btn:hover {
   margin-bottom: 0.2em;
 }
 
+.algo_select-ctn > label {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.algo_select-ctn input {
+  display: none;
+}
+
+.algo_select-ctn input:checked + span {
+  background-color: #024663;
+}
+
+.algo_select-ctn input:checked + span:before {
+  box-shadow: inset 0 0 0 0.125em #024663;
+}
+
+.algo_select-ctn span {
+  display: flex;
+  align-items: center;
+  padding: 0.4em 0.75em 0.4em 0.4em;
+  border-radius: 99em;
+  transition: 0.25s ease;
+}
+
+.algo_select-ctn span:hover {
+  background-color: #024663;
+}
+
+.algo_select-ctn span:before {
+  display: flex;
+  flex-shrink: 0;
+  content: "";
+  background-color: #fff;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  margin-right: 0.4em;
+  transition: 0.25s ease;
+  border: 1px solid #fff;
+  box-shadow: inset 0 0 0 0.45em #024663;
+}
+
+/*
 .algo_select-ctn > input,
 .algo_select-ctn > label {
   cursor: pointer;
@@ -81,7 +127,7 @@ nav > button.main_btn:hover {
 .algo_select-ctn > label {
   font-size: 1.2em;
   padding-left: 0.4em;
-}
+}*/
 
 .switch-checkbox-ctn {
   margin-top: 2em;
