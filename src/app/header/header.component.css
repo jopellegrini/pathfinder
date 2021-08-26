@@ -3,6 +3,20 @@ header {
   overflow: scroll;
 }
 
+button {
+  font-family: "roboto";
+  color: #fff;
+  background-color: #02577a;
+  border-radius: 3px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #006894;
+}
+
 nav {
   left: 0;
   display: flex;
@@ -22,20 +36,8 @@ nav h1 {
 
 nav > button {
   font-size: 1.3em;
-  font-family: "roboto";
-  color: #fff;
-  background-color: #02577a;
-  border: 0;
-  border-radius: 3px;
-  border: 1px solid #fff;
   padding: 0.4em;
-  cursor: pointer;
-  transition: 0.2s;
   margin-bottom: 1em;
-}
-
-nav > button:hover {
-  background-color: #006894;
 }
 
 nav > button.main_btn {
@@ -99,36 +101,6 @@ nav > button.main_btn:hover {
   box-shadow: inset 0 0 0 0.45em #024663;
 }
 
-/*
-.algo_select-ctn > input,
-.algo_select-ctn > label {
-  cursor: pointer;
-}
-
-.algo_select-ctn > input[type="radio"] {
-  width: 1em;
-  height: 1em;
-
-  border: 1px solid #fff;
-  appearance: none;
-  -webkit-appearance: none;
-  border-radius: 50%;
-  background-clip: content-box;
-  padding: 0.3em;
-
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-
-.algo_select-ctn > input[type="radio"]:checked {
-  background-color: #fff;
-}
-
-.algo_select-ctn > label {
-  font-size: 1.2em;
-  padding-left: 0.4em;
-}*/
-
 .switch-checkbox-ctn {
   margin-top: 2em;
   display: flex;
@@ -177,4 +149,16 @@ nav > button.main_btn:hover {
 .switch-checkbox-ctn input:checked + label.switch-label:after {
   left: calc(100% - 0.1em);
   transform: translateX(-100%);
+}
+
+.move-cells-ctn {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 10% 0 10%;
+}
+
+.move-cells-ctn button {
+  font-size: 1.1em;
+  padding: 0.2em 0.3em;
+  margin-bottom: 1em;
 }
