@@ -347,6 +347,7 @@ export class GridComponent implements OnInit {
 
     if (this.isMovingStart) {
       this.setStart(cell);
+      this.closedTip = true;
       this.isMovingStart = false;
     }
 
