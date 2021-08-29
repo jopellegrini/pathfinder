@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   @Output() switchDiagEvent = new EventEmitter<boolean>();
   @Output() switchShowExploredEvent = new EventEmitter<boolean>();
   @Output() moveStartEvent = new EventEmitter<boolean>();
+  @Output() moveEndEvent = new EventEmitter<boolean>();
 
   private algorithm: Algorithm = Algorithm.BFS;
 
@@ -59,5 +60,9 @@ export class HeaderComponent implements OnInit {
 
   emitMoveStart() {
     this.moveStartEvent.emit();
+  }
+
+  emitMoveEnd() {
+    this.moveEndEvent.emit();
   }
 }

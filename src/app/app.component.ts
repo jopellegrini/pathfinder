@@ -37,4 +37,8 @@ export class AppComponent {
   moveStart(): void {
     this.grid.moveStart();
   }
+
+  moveEnd(): void {
+    this.grid.moveEnd();
+  }
 }

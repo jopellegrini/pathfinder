@@ -249,6 +249,13 @@ export class GridComponent implements OnInit {
   }
 
   /**
+   * Begin moving end cell
+   */
+  moveEnd(): void {
+    alert("Moving end cell");
+  }
+
+  /**
    * @param {Cell} cell - The cell whose neighbours must be found
    * @param {boolean} diagonal - Whether the result must contain diagonal cells
    * @return {Cell[]} An array containing neighbours cells
