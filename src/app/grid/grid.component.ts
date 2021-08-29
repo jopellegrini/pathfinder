@@ -243,6 +243,9 @@ export class GridComponent implements OnInit {
   moveStart(): void {
     this.closedTip = false;
     this.isMovingStart = true;
+    this.clearPath();
+    this.clearWalls();
+    this.clearExplored();
   }
 
   /**
