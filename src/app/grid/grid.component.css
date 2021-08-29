@@ -30,3 +30,24 @@
 .explored-cell {
   background-color: var(--explored-cell-color);
 }
+
+.moving-tip-ctn {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 1.5em;
+  border-radius: 5px;
+  background-color: rgba(204, 204, 204, 0.4);
+}
+
+.moving-tip-ctn a {
+  position: absolute;
+  right: 0.5em;
+  top: 0.2em;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.moving-tip-ctn p {
+  margin: 0;
+}

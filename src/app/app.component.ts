@@ -33,4 +33,8 @@ export class AppComponent {
   switchShowExplored(showExplored: boolean): void {
     this.grid.switchShowExplored(showExplored);
   }
+
+  moveStart(): void {
+    this.grid.moveStart();
+  }
 }

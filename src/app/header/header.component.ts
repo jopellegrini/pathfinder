@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   @Output() generateRandomMaze = new EventEmitter<boolean>();
   @Output() switchDiagEvent = new EventEmitter<boolean>();
   @Output() switchShowExploredEvent = new EventEmitter<boolean>();
+  @Output() moveStartEvent = new EventEmitter<boolean>();
 
   private algorithm: Algorithm = Algorithm.BFS;
 
@@ -54,5 +55,9 @@ export class HeaderComponent implements OnInit {
 
   switchShowExplored(event: any): void {
     this.switchShowExploredEvent.emit(event.target.checked);
+  }
+
+  emitMoveStart() {
+    this.moveStartEvent.emit();
   }
 }

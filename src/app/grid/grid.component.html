@@ -17,3 +17,11 @@
     ></td>
   </tr>
 </table>
+<div
+  class="moving-tip-ctn"
+  [ngStyle]="{ display: isTipClosed() ? 'none' : 'flex' }"
+  (click)="closeTipPopup()"
+>
+  <a>X</a>
+  <p>To move start or end, hover over a cell and click to confirm.</p>
+</div>

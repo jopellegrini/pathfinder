@@ -30,6 +30,9 @@ export class GridComponent implements OnInit {
   private isBuilding: boolean = true;
   private allowDiagonal: boolean = false;
   private showExplored: boolean = false;
+  private isMovingStart: boolean = false;
+  private isMovingEnd: boolean = false;
+  private closedTip: boolean = true;
 
   private animateDelay: number = 7;
   private animateExploredDelay: number = 2;
@@ -103,6 +106,10 @@ export class GridComponent implements OnInit {
 
   getEnd(): number {
     return this.end;
+  }
+
+  isTipClosed(): boolean {
+    return this.closedTip;
   }
 
   allowsDiagonal(): boolean {
@@ -205,6 +212,13 @@ export class GridComponent implements OnInit {
   }
 
   /**
+   * Close tip popup
+   */
+  closeTipPopup(): void {
+    this.closedTip = true;
+  }
+
+  /**
    * Randomly places walls on the grid
    */
   generateRandomMaze(): void {
@@ -221,6 +235,14 @@ export class GridComponent implements OnInit {
         }
       })
     );
+  }
+
+  /**
+   * Begin moving start cell
+   */
+  moveStart(): void {
+    this.closedTip = false;
+    this.isMovingStart = true;
   }
 
   /**
@@ -320,6 +342,11 @@ export class GridComponent implements OnInit {
   onMouseDown(cell: Cell): void {
     this.isClicking = true;
 
+    if (this.isMovingStart) {
+      this.setStart(cell);
+      this.isMovingStart = false;
+    }
+
     if (cell.isWall) this.isBuilding = false;
     else {
       this.isBuilding = true;
@@ -335,6 +362,10 @@ export class GridComponent implements OnInit {
   }
 
   onMouseOverCell(cell: Cell): void {
+    if (this.isMovingStart) {
+      this.setStart(cell);
+    }
+
     if (!this.isClicking || cell.isStart || cell.isEnd) return;
 
     if (this.isBuilding) cell.isWall = true;
@@ -343,5 +374,17 @@ export class GridComponent implements OnInit {
 
   getTrackBy(index: any, cell: Cell) {
     return cell.id;
+  }
+
+  /**
+   * Set grid start cell
+   */
+  setStart(newStart: Cell): void {
+    newStart.isStart = true;
+    this.grid[this.startY][this.startX].isStart = false;
+    Utils.getCellFromId(newStart.id, this.gridWidth, this.grid).isStart = true;
+    this.start = newStart.id;
+    this.startX = newStart.x;
+    this.startY = newStart.y;
   }
 }
