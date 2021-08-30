@@ -14,16 +14,16 @@ import { Utils } from "../utils/utils";
 export class GridComponent implements OnInit {
   constructor() {}
 
-  private gridWidth: number = 45; //45
-  private gridHeight: number = 30; //30
+  private gridWidth: number = 45;
+  private gridHeight: number = 30;
   private grid: Cell[][] = [];
 
   private startX: number = 1;
   private startY: number = 1;
   private start: number = 0;
 
-  private endX: number = 25; //25
-  private endY: number = 10; //10
+  private endX: number = 25;
+  private endY: number = 10;
   private end: number = 0;
 
   private isClicking: boolean = false;
@@ -252,7 +252,11 @@ export class GridComponent implements OnInit {
    * Begin moving end cell
    */
   moveEnd(): void {
-    alert("Moving end cell");
+    this.closedTip = false;
+    this.isMovingEnd = true;
+    this.clearPath();
+    this.clearWalls();
+    this.clearExplored();
   }
 
   /**
@@ -356,6 +360,10 @@ export class GridComponent implements OnInit {
       this.setStart(cell);
       this.closedTip = true;
       this.isMovingStart = false;
+    } else if (this.isMovingEnd) {
+      this.setEnd(cell);
+      this.closedTip = true;
+      this.isMovingEnd = false;
     }
 
     if (cell.isWall) this.isBuilding = false;
@@ -373,9 +381,8 @@ export class GridComponent implements OnInit {
   }
 
   onMouseOverCell(cell: Cell): void {
-    if (this.isMovingStart) {
-      this.setStart(cell);
-    }
+    if (this.isMovingStart) this.setStart(cell);
+    else if (this.isMovingEnd) this.setEnd(cell);
 
     if (!this.isClicking || cell.isStart || cell.isEnd) return;
 
@@ -397,5 +404,17 @@ export class GridComponent implements OnInit {
     this.start = newStart.id;
     this.startX = newStart.x;
     this.startY = newStart.y;
+  }
+
+  /**
+   * Set grid end cell
+   */
+  setEnd(newEnd: Cell): void {
+    newEnd.isEnd = true;
+    this.grid[this.endY][this.endX].isEnd = false;
+    Utils.getCellFromId(newEnd.id, this.gridWidth, this.grid).isEnd = true;
+    this.end = newEnd.id;
+    this.endX = newEnd.x;
+    this.endY = newEnd.y;
   }
 }
