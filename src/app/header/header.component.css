@@ -1,6 +1,5 @@
 header {
   height: 100%;
-  overflow: scroll;
 }
 
 button {
@@ -26,6 +25,12 @@ nav {
   color: #fff;
   padding: 1em;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+nav::-webkit-scrollbar {
+  display: none;
 }
 
 nav h1 {
